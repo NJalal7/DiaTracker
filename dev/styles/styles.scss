@@ -21,6 +21,11 @@ body {
 	display: block;
 }
 
+img {
+	width: 50%;
+	float: right;
+	padding-right: 5%;
+}
 
 /*
 	Main Header
@@ -31,6 +36,7 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	font-family: 'Volkhov', serif;
 }
 
 .mainHeader a {
@@ -80,9 +86,14 @@ body {
 	Notes container
 */
 
+.wrapper {
+	padding: 30px;
+}
+
 .notes {
 	padding: 0 50px;
 	width: 50%;
+	float: left;
 }
 
 .noteCard {

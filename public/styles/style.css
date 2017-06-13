@@ -144,6 +144,11 @@ body {
 .questions {
   display: block; }
 
+img {
+  width: 50%;
+  float: right;
+  padding-right: 5%; }
+
 /*
 	Main Header
 */
@@ -151,7 +156,8 @@ body {
   padding: 0 50px;
   display: flex;
   align-items: center;
-  justify-content: space-between; }
+  justify-content: space-between;
+  font-family: 'Volkhov', serif; }
 
 .mainHeader a {
   margin: 0 10px; }
@@ -192,9 +198,13 @@ body {
 /*
 	Notes container
 */
+.wrapper {
+  padding: 30px; }
+
 .notes {
   padding: 0 50px;
-  width: 50%; }
+  width: 50%;
+  float: left; }
 
 .noteCard {
   background: white;

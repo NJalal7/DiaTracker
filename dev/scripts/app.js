@@ -172,8 +172,8 @@ class App extends React.Component {
 	render() {
 		return(
 			<main>
-			<header className="mainHeader">
-				<h1> DiaTracker 💉</h1>
+			<header className="mainHeader clearfix">
+				<h1> DiaTracker <i className="fa fa-heartbeat" aria-hidden="true"></i></h1>
 				<h3> A diabetes management app. </h3>
 					<nav>
 						<a href="" onClick={(e) => this.toggleAddNote.call(this,e)}>My Log</a>
@@ -181,11 +181,11 @@ class App extends React.Component {
 						<a href="" onClick={(e) => this.createModal.call(this,e)}>Create Account</a>
 					</nav>
 				</header>
-				<section className="notes">
+				<section className="notes" >
 					{this.state.notes.map((note,i) => <NoteCard note={note} key={note.key} removeNote={this.removeNote} />)}
 				</section>
-				<aside ref={ref => this.sidebar = ref} className="sidebar">
-					<h3>Hi, userName. Here's your log for currentDate.</h3>
+				<aside ref={ref => this.sidebar = ref} className="sidebar wrapper">
+					<h3>Hi, Nahrin. Here's your log for currentDate.</h3>
 					<form onSubmit={(e) => this.addNew.call(this,e)}>
 						<i className="fa fa-times" onClick={e => this.toggleAddNote.call(this,e)}></i>
 						<input type="text" name="note-title" ref={ref => this.noteTitle = ref}/>
@@ -248,6 +248,9 @@ class App extends React.Component {
 							<input type="submit"/>
 						</div>
 					</form>
+				</div>
+				<div className="FakeCalendar clearfix wrapper">
+					<img src="dev/styles/fakeCalendar.jpg" alt="Image of Calendar"/>
 				</div>
 			</main>
 		)

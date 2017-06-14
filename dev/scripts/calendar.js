@@ -1,20 +1,22 @@
-import React, { Component } from 'react';
-import BigCalendar from 'react-big-calendar';
-import moment from 'moment';
+import React from 'react'
+import { render } from 'react-dom'
+import moment from 'moment'
 
-BigCalendar.momentLocalizer(moment);
-
-export default class Calendar extends Component {
-    render() {
-      return (
-        <div>
-          <BigCalendar
-            culture='en-GB'
-            events={this.props.tasks}
-            views={['month', 'week']} />
-        </div>
-      )
-    }
- }
+import BigCalendar from 'react-big-calendar'
+// a localizer for BigCalendar
+BigCalendar.momentLocalizer(moment)
 
 
+class Calendar extends React.Component {
+  render () {
+    return (
+      // React Components in JSX look like HTML tags
+      <BigCalendar
+        style={{height: '420px'}}
+        events={[]}
+      />
+    )
+  }
+}
+
+export default Calendar; 

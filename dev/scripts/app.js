@@ -70,7 +70,7 @@ class App extends React.Component {
 		e.preventDefault();
 		const newNote = {
 			title: this.noteTitle.value,
-			text: this.noteText.value
+			text: this.noteText.value,
 		};
 		const newState = Array.from(this.state.notes);
 		const currentUser = firebase.auth().currentUser.uid;
@@ -249,8 +249,8 @@ class App extends React.Component {
 						</div>
 					</form>
 				</div>
-				<div className="FakeCalendar clearfix wrapper">
-					<img src="dev/styles/fakeCalendar.jpg" alt="Image of Calendar"/>
+				<div className="calendar wrapper">
+					<Calendar/>
 				</div>
 			</main>
 		)

@@ -7,24 +7,11 @@ input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer;}b
 
 body {
 	background-color: #F5F5F5;
-	// background: url('/dev/styles/diatracker-background.jpg');
-	background-size: center;
-	background-repeat: no-repeat;
 	color: #708090;
 }
 
 .log-button{
 	text-align: center;
-}
-
-.questions{
-	display: block;
-}
-
-img {
-	width: 50%;
-	float: right;
-	padding-right: 5%;
 }
 
 /*
@@ -41,18 +28,19 @@ img {
 
 .mainHeader a {
 	margin: 0 10px;
+	font-family: sans-serif;
 }
 
 /*
-	Sidebar
+	This is the form in the sidebar
 */
 
 .sidebar {
-	width: 550px;
+	width: 600px;
 	position: absolute;
 	top: 0;
 	bottom: 0;
-	left: -550px;
+	left: -600px;
 	background: #B0C4DE;
 	transition: all 0.5s ease;
 	padding: 0 15px;
@@ -68,12 +56,16 @@ img {
 	margin-bottom: 25px;
 	background: transparent;
 	border: none;
-	border-bottom: 2px solid #517288;
+	border-bottom: 2px solid #708090;
 }
 
 .sidebar input[type=submit] {
-	border: 2px solid #517288;
-	color: #E0FFFF;
+	border: 2px solid #708090;
+	color: white;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	margin: 2px;
+	// width: 50%;
 }
 
 .fa-times {
@@ -83,12 +75,13 @@ img {
 }
 
 /*
-	Notes container
+	This is the container for notes
 */
 
 .wrapper {
 	padding: 30px;
 }
+
 
 .notes {
 	padding: 0 50px;

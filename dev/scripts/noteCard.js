@@ -33,10 +33,10 @@ export default class NoteCard extends React.Component {
 		objRef.update({
 			title: this.state.note.title,
 			text: this.state.note.text,
-			blg: this.state.blg,
-			food: this.state.food,
-			water: this.state.water,
-			fitness: this.state.fitness,
+			blg: this.state.note.blg,
+			food: this.state.note.food,
+			water: this.state.note.water,
+			fitness: this.state.note.fitness,
 		});
 		this.setState({
 			editing: false
@@ -47,13 +47,13 @@ export default class NoteCard extends React.Component {
 			<span>
 				<h4>{this.state.note.title}</h4>
 				<p>{this.state.note.text}</p>
-				<p> BLG: {this.state.blg} mg/dl </p>
-				<p> My meals for the day: {this.state.food} </p>
-				<p> I drank {this.state.water} cup(s) of water today. </p>
-				<p> Activity: {this.state.fitness} </p>
-				<p> I slept for {this.state.sleep} hours last night. </p>
-				<p> Stress level: {this.state.stress} /100</p>
-				<p> Notes: {this.state.notes} </p>
+				<p> BLG: {this.state.note.blg} mg/dl </p>
+				<p> My meals for the day: {this.state.note.food} </p>
+				<p> I drank {this.state.note.water} cup(s) of water today. </p>
+				<p> Activity: {this.state.note.fitness} </p>
+				<p> I slept for {this.state.note.sleep} hours last night. </p>
+				<p> Stress level: {this.state.note.stress} /100</p>
+				<p> Notes: {this.state.note.notes} </p>
 			</span>
 		);
 		if(this.state.editing) {

@@ -20,7 +20,6 @@ button.rbc-input::-moz-focus-inner {
   box-sizing: border-box;
   height: 100%;
   margin-left: auto;
-  padding-right: 5%;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: column;

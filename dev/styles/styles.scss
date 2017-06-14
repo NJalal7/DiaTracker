@@ -64,12 +64,13 @@ body {
 }
 
 .sidebar input[type=submit] {
-	border: 2px solid #708090;
-	color: white;
+	font-family: sans-serif;
+	border: 2px solid #182020;
+	color: #182020;
+	background: white;
 	text-transform: uppercase;
-	letter-spacing: 2px;
-	margin: 2px;
-	// width: 50%;
+	font-size: 14px;
+	letter-spacing: 1px;
 }
 
 .fa-times {

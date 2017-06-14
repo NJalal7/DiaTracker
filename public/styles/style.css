@@ -136,9 +136,6 @@ body {
   background-color: #F5F5F5;
   color: #708090; }
 
-.log-button {
-  text-align: center; }
-
 /*
 	Main Header
 */
@@ -147,11 +144,19 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-family: 'Volkhov', serif; }
+  font-family: 'Volkhov', serif;
+  background: white;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1); }
 
-.mainHeader a {
-  margin: 0 10px;
-  font-family: sans-serif; }
+.mainHeader button {
+  margin: 12px;
+  font-family: sans-serif;
+  border: 2px solid #182020;
+  color: #182020;
+  background: transparent;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 1px; }
 
 /*
 	This is the form in the sidebar
@@ -254,7 +259,9 @@ body {
   border: 10px solid rgba(255, 255, 255, 0.5);
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); }
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+  box-shadow: 0 0 35px rgba(0, 0, 0, 0.2); }
 
 .modal div {
   margin: 15px;
@@ -263,9 +270,56 @@ body {
 .modal label {
   margin-right: 10px; }
 
+.modal input {
+  display: block;
+  width: 100%;
+  height: 50px;
+  font-size: 25px;
+  padding: 0 10px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.2); }
+
+.modal input[type=submit] {
+  background: rgba(50, 216, 81, 0.94);
+  box-shadow: 0px 3px 0 rgba(91, 165, 104, 0.94);
+  color: white;
+  border: none; }
+
+.modal input[type=submit]:hover,
+.modal input[type=submit]:focus {
+  background-color: rgba(86, 234, 114, 0.94);
+  outline: none; }
+
+.modal input[type=submit]:active {
+  box-shadow: 0px 0px 0 rgba(91, 165, 104, 0.94); }
+
+.modal .close {
+  position: absolute;
+  right: -45px;
+  top: -10px;
+  background: white;
+  padding: 10px;
+  border-radius: 5px; }
+
 .overlay {
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
   background: rgba(0, 0, 0, 0.4); }
+
+.socialMedia {
+  background: #708090;
+  color: #F5F5F5; }
+  .socialMedia .wrapper {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 25px; }
+  .socialMedia .fa {
+    color: white;
+    font-size: 16px;
+    margin-left: 20px; }
+  .socialMedia .fa-twitter {
+    margin-left: 30px; }

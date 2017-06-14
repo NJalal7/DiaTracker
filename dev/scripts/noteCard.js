@@ -10,7 +10,7 @@ export default class NoteCard extends React.Component {
 	}
 	componentDidMount() {
 		this.setState({
-			note: this.props.note
+			note: this.props.note,
 		});
 	}
 	edit() {
@@ -45,15 +45,14 @@ export default class NoteCard extends React.Component {
 	render() {
 		let editTemp = (
 			<span>
-				<h4>{this.state.note.title}</h4>
-				<p>{this.state.note.text}</p>
-				<p> BLG: {this.state.note.blg} mg/dl </p>
-				<p> My meals for the day: {this.state.note.food} </p>
+				<h3>Today's log: </h3>
+				<p> BGL: {this.state.note.title} mg/dl </p>
+				<p> My meals for the day: {this.state.note.text} </p>
 				<p> I drank {this.state.note.water} cup(s) of water today. </p>
 				<p> Activity: {this.state.note.fitness} </p>
 				<p> I slept for {this.state.note.sleep} hours last night. </p>
 				<p> Stress level: {this.state.note.stress} /100</p>
-				<p> Notes: {this.state.note.notes} </p>
+				<p> Notes: {this.state.notes} </p>
 			</span>
 		);
 		if(this.state.editing) {

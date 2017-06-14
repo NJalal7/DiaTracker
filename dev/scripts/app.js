@@ -171,44 +171,36 @@ class App extends React.Component {
 	}
 	render() {
 		return(
+			<div>
 			<main>
 			<header className="mainHeader clearfix">
 				<h1> DiaTracker <i className="fa fa-heartbeat" aria-hidden="true"></i></h1>
 				<h3> A diabetes management app. </h3>
 					<nav>
-						<a href="" onClick={(e) => this.toggleAddNote.call(this,e)}>My Log</a>
-						<a href="" onClick={(e) => this.showLoginModal.call(this,e)}>Sign in</a>
-						<a href="" onClick={(e) => this.createModal.call(this,e)}>Create Account</a>
+						<button href="" onClick={(e) => this.toggleAddNote.call(this,e)}>My Log</button>
+						<button href="" onClick={(e) => this.showLoginModal.call(this,e)}>Sign in</button>
+						<button href="" onClick={(e) => this.createModal.call(this,e)}>Create Account</button>
 					</nav>
 				</header>
 				<section className="notes" >
 					{this.state.notes.map((note,i) => <NoteCard note={note} key={note.key} removeNote={this.removeNote} />)}
 				</section>
 				<aside ref={ref => this.sidebar = ref} className="sidebar wrapper">
-					<h3>Hi, Nahrin. Here's your log for currentDate.</h3>
+					<h3>Hello! Here is your daily log:</h3>
 					<form onSubmit={(e) => this.addNew.call(this,e)}>
 						<i className="fa fa-times" onClick={e => this.toggleAddNote.call(this,e)}></i>
-						<input type="text" name="note-title" ref={ref => this.noteTitle = ref}/>
-						<textarea name="note-text" ref={ref => this.noteText = ref}></textarea>
-
 						<label htmlFor="blg">Enter your blood glucose level here: </label>
-						<input className="questions" name="blg" value={this.state.blg} onChange={this.handleChange} type="text" placeholder="Ex. mg/dl" />
-
+						<input type="text" name="note-title" placeholder="Ex. mg/dl" ref={ref => this.noteTitle = ref}/>
 						<label htmlFor="food">Enter your meals here: </label>
-						<input className="questions" name="food" value={this.state.food} onChange={this.handleChange} type="text" placeholder="Ex. Lunch: 3 fish tacos" />
-
+						<textarea name="note-text" placeholder="Ex. Lunch: 3 fish tacos" ref={ref => this.noteText = ref}></textarea>
 						<label htmlFor="water">Enter your water intake here: </label>
 						<input className="questions" name="water" value={this.state.water} onChange={this.handleChange} type="number" placeholder="Ex. 7 glasses of water" />
-
 						<label htmlFor="fitness">Were you active today? If so, what did you do for exercise? </label>
 						<input className="questions" name="fitness" value={this.state.fitness} onChange={this.handleChange} type="text" placeholder="Ex. Jogged for 30 minutes" />
-
 						<label htmlFor="sleep"> How many hours of sleep did you get last night? </label>
 						<input className="questions" name="sleep" value={this.state.sleep} onChange={this.handleChange} type="number" placeholder="Ex. 9 hours" />
-
 						<label htmlFor="stress">On a scale of 1-100, how stressed were you today? </label>
 						<input className="questions" name="stress" value={this.state.stress} onChange={this.handleChange} type="range" min="Not stressed" max="Very stressed" step="10" />
-
 						<label htmlFor="comments">Additional Notes: </label>
 						<textarea className="questions" name="comments" value={this.state.comments} onChange={this.handleChange} type="text" placeholder="Ex. Felt lightheaded at 5pm. "> </textarea>
 						<input type="submit"/>
@@ -253,13 +245,18 @@ class App extends React.Component {
 					<Calendar/>
 				</div>
 			</main>
+			<footer>
+					<div className="socialMedia">
+						<div className="wrapper">
+							<span class="copyright">&copy;</span> 2017 | Nahrin Jalal
+							<a href="https://twitter.com/NahrinJalal" target="_blank"><i  className="fa fa-twitter" aria-hidden="true"></i></a>
+							<a href="https://github.com/NJalal7" target="_blank"><i  className="fa fa-github" aria-hidden="true"></i></a>
+						</div>
+					</div>
+			</footer>
+			</div>
 		)
 	}
 }
-
-
 ReactDOM.render(<App />, document.getElementById('app'));
-
-
-
 

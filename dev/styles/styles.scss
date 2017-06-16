@@ -72,7 +72,7 @@ body {
 
 .sidebar input,
 .sidebar textarea {
-	width: 100%;
+	width: 30%;
 	margin-bottom: 25px;
 	background: transparent;
 	border: none;
@@ -96,19 +96,6 @@ body {
 	&:hover{
 	 transform: scale(1.1);
 	}
-
-
-	// font-family: sans-serif;
-	// border: 2px solid #182020;
-	// color: #182020;
-	// background: white;
-	// text-transform: uppercase;
-	// font-size: 14px;
-	// letter-spacing: 1px;
-	// width: 100px;
-	// margin: 0 auto;
-	// display: block;
-	// padding: 7px;
 }
 
 .fa-times {
@@ -189,7 +176,7 @@ body {
 }
 
 .modal {
-	width: 400px;
+	width: 50%;
 	background: white;
 	border: 10px solid rgba(255,255,255,0.5);
 	top: 50%;
@@ -218,15 +205,15 @@ body {
 }
 
 .modal input[type=submit] {
-	background: rgba(50, 216, 81, 0.94);
-	box-shadow: 0px 3px 0 rgba(91, 165, 104, 0.94);
+	background: gray;
+	// box-shadow: 0px 3px 0 rgba(91, 165, 104, 0.94);
 	color: white;
 	border: none;
 }
 
 .modal input[type=submit]:hover,
 .modal input[type=submit]:focus {
-	background-color: rgba(86, 234, 114, 0.94);
+	background-color: gray;
 	outline: none;
 }
 
@@ -248,7 +235,7 @@ body {
 	left: 0;
 	height: 100%;
 	width: 100%;
-	background: rgba(0,0,0,0.4);
+	background: white;
 }
 
 //This is the footer 

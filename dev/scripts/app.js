@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import NoteCard from './noteCard.js';
 import Calendar from './calendar.js';
+import Login from './Login.js';
+import SignUp from './SignUp.js';
+// import { Router, Route, browserHistory, Link } from 'react-router';
 
 
 //This initializes the Firebase database
@@ -71,6 +74,12 @@ class App extends React.Component {
 		const newNote = {
 			title: this.noteTitle.value,
 			text: this.noteText.value,
+			water: this.noteWater.value,
+			sleep: this.noteSleep.value,
+			fitness: this.noteFitness.value,
+			stress: this.noteStress.value,
+			comments: this.noteComments.value,
+
 		};
 		const newState = Array.from(this.state.notes);
 		const currentUser = firebase.auth().currentUser.uid;
@@ -189,20 +198,27 @@ class App extends React.Component {
 					<h3>Hello! Here is your daily log:</h3>
 					<form onSubmit={(e) => this.addNew.call(this,e)}>
 						<i className="fa fa-times" onClick={e => this.toggleAddNote.call(this,e)}></i>
+
 						<label htmlFor="blg">Enter your blood glucose level here: </label>
 						<input type="text" name="note-title" placeholder="Ex. mg/dl" ref={ref => this.noteTitle = ref}/>
+
 						<label htmlFor="food">Enter your meals here: </label>
 						<textarea name="note-text" placeholder="Ex. Lunch: 3 fish tacos" ref={ref => this.noteText = ref}></textarea>
-						<label htmlFor="water">Enter your water intake here: </label>
-						<input className="questions" name="water" value={this.state.water} onChange={this.handleChange} type="number" placeholder="Ex. 7 glasses of water" />
-						<label htmlFor="fitness">Were you active today? If so, what did you do for exercise? </label>
-						<input className="questions" name="fitness" value={this.state.fitness} onChange={this.handleChange} type="text" placeholder="Ex. Jogged for 30 minutes" />
-						<label htmlFor="sleep"> How many hours of sleep did you get last night? </label>
-						<input className="questions" name="sleep" value={this.state.sleep} onChange={this.handleChange} type="number" placeholder="Ex. 9 hours" />
-						<label htmlFor="stress">On a scale of 1-100, how stressed were you today? </label>
-						<input className="questions" name="stress" value={this.state.stress} onChange={this.handleChange} type="range" min="Not stressed" max="Very stressed" step="10" />
-						<label htmlFor="comments">Additional Notes: </label>
-						<textarea className="questions" name="comments" value={this.state.comments} onChange={this.handleChange} type="text" placeholder="Ex. Felt lightheaded at 5pm. "> </textarea>
+
+						<label htmlFor="note-water">Enter your water intake here: </label>
+						<input name="note-water" type="number" placeholder="Ex. 7 glasses of water" ref={ref => this.noteWater = ref}/>
+
+						<label htmlFor="note-fitness">Were you active today? If so, what did you do for exercise? </label>
+						<input name="note-fitness" type="text" placeholder="Ex. Jogged for 30 minutes" ref={ref => this.noteFitness = ref}/>
+
+						<label htmlFor="note-sleep"> How many hours of sleep did you get last night? </label>
+						<input name="note-sleep" type="number" placeholder="Ex. 9 hours" ref={ref => this.noteSleep = ref}/>
+
+						<label htmlFor="note-stress">On a scale of 1-100, how stressed were you today? </label>
+						<input name="note-stress" type="range" min="Not stressed" max="Very stressed" step="10" ref={ref => this.noteStress = ref}/>
+						
+						<label htmlFor="note-comments">Additional Notes: </label>
+						<textarea name="note-comments" placeholder="Ex. Felt lightheaded at 5pm." ref={ref => this.noteComments = ref}></textarea>
 						<input type="submit"/>
 					</form>
 				</aside>
@@ -259,4 +275,9 @@ class App extends React.Component {
 	}
 }
 ReactDOM.render(<App />, document.getElementById('app'));
+
+
+
+
+
 

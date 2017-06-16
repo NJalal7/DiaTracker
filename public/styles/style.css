@@ -189,7 +189,7 @@ body {
 
 .sidebar input,
 .sidebar textarea {
-  width: 100%;
+  width: 30%;
   margin-bottom: 25px;
   background: transparent;
   border: none;
@@ -277,7 +277,7 @@ body {
   opacity: 1; }
 
 .modal {
-  width: 400px;
+  width: 50%;
   background: white;
   border: 10px solid rgba(255, 255, 255, 0.5);
   top: 50%;
@@ -303,14 +303,13 @@ body {
   border: 1px solid rgba(0, 0, 0, 0.2); }
 
 .modal input[type=submit] {
-  background: rgba(50, 216, 81, 0.94);
-  box-shadow: 0px 3px 0 rgba(91, 165, 104, 0.94);
+  background: gray;
   color: white;
   border: none; }
 
 .modal input[type=submit]:hover,
 .modal input[type=submit]:focus {
-  background-color: rgba(86, 234, 114, 0.94);
+  background-color: gray;
   outline: none; }
 
 .modal input[type=submit]:active {
@@ -329,7 +328,7 @@ body {
   left: 0;
   height: 100%;
   width: 100%;
-  background: rgba(0, 0, 0, 0.4); }
+  background: white; }
 
 .socialMedia {
   background: #708090;

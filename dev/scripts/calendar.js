@@ -10,7 +10,6 @@ BigCalendar.momentLocalizer(moment)
 class Calendar extends React.Component {
   render () {
     return (
-      // React Components in JSX look like HTML tags
       <BigCalendar
         style={{height: '420px'}}
         events={[]}

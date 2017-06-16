@@ -5,37 +5,8 @@ import Calendar from './calendar.js';
 import { 
 	BrowserRouter as Router, 
 	Route, Link } from 'react-router-dom';
-import Dashboard from './dashboard.js';
 
-//This initializes the Firebase database
-var config = {
-    apiKey: "AIzaSyDX4xlM88OYmOuNOHWbiIqcLFDU-7rnwhM",
-    authDomain: "diatracker.firebaseapp.com",
-    databaseURL: "https://diatracker.firebaseio.com",
-    projectId: "diatracker",
-    storageBucket: "diatracker.appspot.com",
-    messagingSenderId: "743066598077"
-  };
-
-firebase.initializeApp(config);
-
-// const auth = firebase.auth();
-// const provider = new firebase.auth.GoogleAuthProvider();
-// const dbRef = firebase.database().ref('/');
-
-class Home extends React.Component {
-    render() {
-        return (
-            <div>
-                This is the homepage!
-            </div>
-        )
-    }
-}
-
-
-
-class App extends React.Component {
+export default class Dashboard extends React.Component {
 	constructor() {
 		super();
 		this.state = {
@@ -111,7 +82,7 @@ class App extends React.Component {
 				console.log(err);
 			});
 	}
-	showLoginModal(e) {
+		showLoginModal(e) {
 		e.preventDefault();
 		this.loginModal.classList.add('show');
 		this.toggleOverlay.call(this);
@@ -146,7 +117,7 @@ class App extends React.Component {
 			confirm: this.confirmPassword.value
 		};
 		if(user.confirm !== user.password) {
-			alert('Please make sure you passwords match.');
+			alert('Please make sure your passwords match.');
 			return;
 		}
 		firebase.auth()
@@ -190,40 +161,84 @@ class App extends React.Component {
 		const inputRef = firebase.database().ref(key);
 		inputRef.remove();
 	}
-	render() {
-		return(
-			<Router>
-			<div>
-			<header className="mainHeader clearfix">
-				<h1> DiaTracker <i className="fa fa-heartbeat" aria-hidden="true"></i></h1>
-				<h3> A diabetes management app. </h3>
-					<nav>
-						<button href="" onClick={(e) => this.showLoginModal.call(this,e)}>Sign in</button>
-						<button href="" onClick={(e) => this.createModal.call(this,e)}>Create Account</button>
-					</nav>
-				</header>
 
-				<Route exact path="/" component={Home} />
-				<Route exact path="/dashboard" component={Dashboard} />
+    render() {
+        return (
+            <div>
+            <main>
+				<button href="" onClick={(e) => this.toggleAddNote.call(this,e)}>My Log</button>
 
-			<footer>
-					<div className="socialMedia">
-						<div className="wrapper">
-							<span class="copyright">&copy;</span> 2017 | Nahrin Jalal
-							<a href="https://twitter.com/NahrinJalal" target="_blank"><i  className="fa fa-twitter" aria-hidden="true"></i></a>
-							<a href="https://github.com/NJalal7" target="_blank"><i  className="fa fa-github" aria-hidden="true"></i></a>
+                <section className="notes" >
+					{this.state.notes.map((note,i) => <NoteCard note={note} key={note.key} removeNote={this.removeNote} />)}
+				</section>
+				<aside ref={ref => this.sidebar = ref} className="sidebar wrapper">
+					<h3>Hello! Here is your daily log:</h3>
+					<form onSubmit={(e) => this.addNew.call(this,e)}>
+						<i className="fa fa-times" onClick={e => this.toggleAddNote.call(this,e)}></i>
+
+						<label htmlFor="blg">Enter your blood glucose level here: </label>
+						<input type="text" name="note-title" placeholder="Ex. mg/dl" ref={ref => this.noteTitle = ref}/>
+
+						<label htmlFor="food">Enter your meals here: </label>
+						<textarea name="note-text" placeholder="Ex. Lunch: 3 fish tacos" ref={ref => this.noteText = ref}></textarea>
+
+						<label htmlFor="note-water">Enter your water intake here: </label>
+						<input name="note-water" type="number" placeholder="Ex. 7 glasses of water" ref={ref => this.noteWater = ref}/>
+
+						<label htmlFor="note-fitness">Were you active today? If so, what did you do for exercise? </label>
+						<input name="note-fitness" type="text" placeholder="Ex. Jogged for 30 minutes" ref={ref => this.noteFitness = ref}/>
+
+						<label htmlFor="note-sleep"> How many hours of sleep did you get last night? </label>
+						<input name="note-sleep" type="number" placeholder="Ex. 9 hours" ref={ref => this.noteSleep = ref}/>
+
+						<label htmlFor="note-stress">On a scale of 1-100, how stressed were you today? </label>
+						<input name="note-stress" type="range" min="Not stressed" max="Very stressed" step="10" ref={ref => this.noteStress = ref}/>
+						
+						<label htmlFor="note-comments">Additional Notes: </label>
+						<textarea name="note-comments" placeholder="Ex. Felt lightheaded at 5pm." ref={ref => this.noteComments = ref}></textarea>
+						<input type="submit"/>
+					</form>
+				</aside>
+				<div className="overlay" ref={ref => this.overlay = ref}></div>
+				<div className="loginModal modal" ref={ref => this.loginModal = ref}>
+					<form action="" onSubmit={e => this.loginUser.call(this,e)}>
+						<div>
+							<label htmlFor="email">Email:</label>
+							<input type="text" name="email" ref={ref => this.userEmail = ref}/>
 						</div>
-					</div>
-			</footer>
-			</div>
-			</Router>
-		)
-	}
+						<div>
+							<label htmlFor="password">Password:</label>
+							<input type="password" name="password" ref={ref => this.userPassword = ref}/>
+						</div>
+						<div>
+							<input type="submit"/>
+						</div>
+					</form>
+				</div>
+				<div className="createUserModal modal" ref={ref => this.createUserModal = ref}>
+					<form action="" onSubmit={e => this.createUser.call(this,e)}>
+						<div>
+							<label htmlFor="createEmail">Email:</label>
+							<input type="text" name="createEmail" ref={ref => this.createEmail = ref}/>
+						</div>
+						<div>
+							<label htmlFor="createPassword">Password:</label>
+							<input type="password" name="createPassword" ref={ref => this.createPassword = ref}/>
+						</div>
+						<div>
+							<label htmlFor="confirmPassword">Confirm Password:</label>
+							<input type="password" name="confirmPassword" ref={ref => this.confirmPassword = ref}/>
+						</div>
+						<div>
+							<input type="submit"/>
+						</div>
+					</form>
+				</div>
+				<div className="calendar wrapper">
+					<Calendar/>
+				</div>
+			</main>
+            </div>
+        )
+    }
 }
-ReactDOM.render(<App />, document.getElementById('app'));
-
-
-
-
-
-

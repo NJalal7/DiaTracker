@@ -19,21 +19,21 @@ var config = {
 
 firebase.initializeApp(config);
 
-// const auth = firebase.auth();
-// const provider = new firebase.auth.GoogleAuthProvider();
-// const dbRef = firebase.database().ref('/');
+const auth = firebase.auth();
+const provider = new firebase.auth.GoogleAuthProvider();
+const dbRef = firebase.database().ref('/');
 
 class Home extends React.Component {
     render() {
         return (
-            <div>
-                This is the homepage!
+            <div className="homepage">
+               <h1>DiaTracker is a digital logging tool crafted to help you manage your diabetes.</h1>
+               <button>Sign In</button>
+               <button>Create Account</button>
             </div>
         )
     }
 }
-
-
 
 class App extends React.Component {
 	constructor() {
@@ -47,6 +47,7 @@ class App extends React.Component {
 			fitness: "",
 			stress: "",
 			comments: "",
+			date: "",
 		}
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -81,36 +82,7 @@ class App extends React.Component {
 			alert('Please login to add a new note');
 		}
 	}
-	addNew(e) {
-		e.preventDefault();
-		const newNote = {
-			title: this.noteTitle.value,
-			text: this.noteText.value,
-			water: this.noteWater.value,
-			sleep: this.noteSleep.value,
-			fitness: this.noteFitness.value,
-			stress: this.noteStress.value,
-			comments: this.noteComments.value,
 
-		};
-		const newState = Array.from(this.state.notes);
-		const currentUser = firebase.auth().currentUser.uid;
-		const dbRef = firebase.database().ref(`users/${currentUser}/notes`);
-		dbRef.push(newNote)
-			.then(res => {
-				newNote.key = res.key;
-				newState.push(newNote);
-				this.setState({
-					notes: newState
-				});
-				this.noteTitle.value = '';
-				this.noteText.value = '';
-				this.sidebar.classList.toggle('show');
-			})
-			.catch(err => {
-				console.log(err);
-			});
-	}
 	showLoginModal(e) {
 		e.preventDefault();
 		this.loginModal.classList.add('show');
@@ -176,6 +148,7 @@ class App extends React.Component {
 			fitness: this.state.fitness,
 			stress: this.state.stress,
 			comments: this.state.comments,
+			date: this.state.date,
 		});
 		this.setState({
 			currentUserInput: '',
@@ -199,22 +172,12 @@ class App extends React.Component {
 				<h3> A diabetes management app. </h3>
 					<nav>
 						<button href="" onClick={(e) => this.showLoginModal.call(this,e)}>Sign in</button>
-						<button href="" onClick={(e) => this.createModal.call(this,e)}>Create Account</button>
+						<button href="" onClick={(e) => this.createModal.call(this,e)}>My Profile</button>
 					</nav>
 				</header>
 
 				<Route exact path="/" component={Home} />
 				<Route exact path="/dashboard" component={Dashboard} />
-
-			<footer>
-					<div className="socialMedia">
-						<div className="wrapper">
-							<span class="copyright">&copy;</span> 2017 | Nahrin Jalal
-							<a href="https://twitter.com/NahrinJalal" target="_blank"><i  className="fa fa-twitter" aria-hidden="true"></i></a>
-							<a href="https://github.com/NJalal7" target="_blank"><i  className="fa fa-github" aria-hidden="true"></i></a>
-						</div>
-					</div>
-			</footer>
 			</div>
 			</Router>
 		)

@@ -148,9 +148,10 @@ body {
   background: white;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1); }
 
-.mainHeader button {
+.mainHeader button, .log-button, .homepage button {
   margin: 12px;
   font-family: sans-serif;
+  border-radius: 5px;
   border: none;
   color: white;
   background: #708090;
@@ -159,25 +160,34 @@ body {
   letter-spacing: 1px;
   padding: 12px;
   transition: all .2s ease-in-out; }
-  .mainHeader button:hover {
+  .mainHeader button:hover, .log-button:hover, .homepage button:hover {
     transform: scale(1.1); }
+
+.homepage h1 {
+  font-family: 'Volkhov', serif;
+  font-size: 22px; }
+
+.homepage button {
+  width: 30%;
+  margin: 10%; }
 
 /*
 	This is the form in the sidebar
 */
 .sidebar {
-  width: 600px;
+  width: 40%;
+  height: 100vh;
   position: absolute;
   top: 0;
   bottom: 0;
-  left: -600px;
+  left: -40%;
   background: #B0C4DE;
   transition: all 0.5s ease;
-  padding: 0 15px;
-  color: white; }
+  color: white;
+  z-index: 9; }
 
 .sidebar label {
-  font-size: 20px; }
+  font-size: 18px; }
 
 .sidebar h3 {
   color: white;
@@ -189,16 +199,17 @@ body {
 
 .sidebar input,
 .sidebar textarea {
-  width: 30%;
-  margin-bottom: 25px;
+  width: 100%;
   background: transparent;
   border: none;
-  border-bottom: 2px solid #708090; }
+  border-bottom: 1px solid white;
+  display: block;
+  margin-bottom: 19px; }
 
 .sidebar input[type=submit] {
-  margin: 12px;
   font-family: sans-serif;
   border: none;
+  border-radius: 5px;
   color: #708090;
   background: white;
   text-transform: uppercase;
@@ -207,6 +218,7 @@ body {
   padding: 12px;
   width: 100px;
   margin: 0 auto;
+  margin-top: 30px;
   display: block;
   transition: all .2s ease-in-out; }
   .sidebar input[type=submit]:hover {
@@ -217,11 +229,14 @@ body {
   top: 5px;
   right: 5px; }
 
+.rbc-calendar {
+  background-color: #F8F8FF; }
+
 /*
 	This is the container for notes
 */
 .wrapper {
-  padding: 30px; }
+  padding: 0 60px; }
 
 .notes {
   padding: 0 50px;
@@ -233,7 +248,9 @@ body {
   box-shadow: 3px 2px 3px rgba(0, 0, 0, 0.1);
   margin: 15px;
   padding: 10px;
-  position: relative; }
+  position: relative;
+  z-index: 2;
+  width: 50%; }
 
 .noteCard h4 {
   margin-top: 0;
@@ -257,9 +274,19 @@ body {
 
 .noteCard input[type=submit] {
   width: auto;
-  border: 2px solid #182020;
-  color: #182020;
-  background: transparent; }
+  margin: 12px;
+  font-family: sans-serif;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  background: #708090;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 1px;
+  padding: 12px;
+  transition: all .2s ease-in-out; }
+  .noteCard input[type=submit]:hover {
+    transform: scale(1.1); }
 
 /*
 	Modals
@@ -332,7 +359,10 @@ body {
 
 .socialMedia {
   background: #708090;
-  color: #F5F5F5; }
+  color: #F5F5F5;
+  position: absolute;
+  width: 100%;
+  bottom: 0; }
   .socialMedia .wrapper {
     width: 90%;
     display: flex;
@@ -345,3 +375,17 @@ body {
     margin-left: 20px; }
   .socialMedia .fa-twitter {
     margin-left: 30px; }
+
+@media (max-width: 1190px) {
+  .sidebar {
+    width: 70%;
+    left: -70%; } }
+
+@media (max-width: 690px) {
+  .sidebar {
+    width: 100%;
+    left: -100%; } }
+
+@media (max-width: 475px) {
+  .sidebar input[type="submit"] {
+    margin-top: 10px; } }

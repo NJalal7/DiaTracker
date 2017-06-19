@@ -55,6 +55,7 @@ export default class Dashboard extends React.Component {
 	addNew(e) {
 		e.preventDefault();
 		const newNote = {
+			date: this.noteDate.value,
 			title: this.noteTitle.value,
 			text: this.noteText.value,
 			water: this.noteWater.value,
@@ -74,8 +75,15 @@ export default class Dashboard extends React.Component {
 				this.setState({
 					notes: newState
 				});
+
+				this.noteDate.value = ''; 
 				this.noteTitle.value = '';
 				this.noteText.value = '';
+				this.noteStress.value = '';
+				this.noteFitness.value = '';
+				this.noteComments.value = '';
+				this.noteWater.value = '';
+				this.noteSleep.value = '';
 				this.sidebar.classList.toggle('show');
 			})
 			.catch(err => {
@@ -147,6 +155,7 @@ export default class Dashboard extends React.Component {
 			fitness: this.state.fitness,
 			stress: this.state.stress,
 			comments: this.state.comments,
+			date: this.state.date,
 		});
 		this.setState({
 			currentUserInput: '',
@@ -166,15 +175,18 @@ export default class Dashboard extends React.Component {
         return (
             <div>
             <main>
-				<button href="" onClick={(e) => this.toggleAddNote.call(this,e)}>My Log</button>
+				<button className="log-button" href="" onClick={(e) => this.toggleAddNote.call(this,e)}>Log</button>
 
                 <section className="notes" >
-					{this.state.notes.map((note,i) => <NoteCard note={note} key={note.key} removeNote={this.removeNote} />)}
+					{/* this.state.notes.map((note,i) => <NoteCard note={note} key={note.key} removeNote={this.removeNote} />) */}
 				</section>
 				<aside ref={ref => this.sidebar = ref} className="sidebar wrapper">
 					<h3>Hello! Here is your daily log:</h3>
 					<form onSubmit={(e) => this.addNew.call(this,e)}>
 						<i className="fa fa-times" onClick={e => this.toggleAddNote.call(this,e)}></i>
+
+						<label htmlFor="date">Today's date: </label>
+						<input type="date" name="note-date" ref={ref => this.noteDate = ref}/>
 
 						<label htmlFor="blg">Enter your blood glucose level here: </label>
 						<input type="text" name="note-title" placeholder="Ex. mg/dl" ref={ref => this.noteTitle = ref}/>
@@ -235,7 +247,7 @@ export default class Dashboard extends React.Component {
 					</form>
 				</div>
 				<div className="calendar wrapper">
-					<Calendar/>
+					<Calendar notes={this.state.notes} />
 				</div>
 			</main>
             </div>

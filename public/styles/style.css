@@ -148,7 +148,7 @@ body {
   background: white;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1); }
 
-.mainHeader button, .log-button, .homepage button {
+.mainHeader button, .log-button, .homepage button, .dashboard button {
   margin: 12px;
   font-family: sans-serif;
   border-radius: 5px;
@@ -163,13 +163,28 @@ body {
   .mainHeader button:hover, .log-button:hover, .homepage button:hover {
     transform: scale(1.1); }
 
-.homepage h1 {
+.homepage {
+  text-align: center;
   font-family: 'Volkhov', serif;
-  font-size: 22px; }
+  margin-top: 6em;
+}
+
+.homepage h1 {
+  font-size: 30px; }
+
+.homepage h2 {
+  font-size: 20px;
+  margin-top: 3em;
+   }
 
 .homepage button {
   width: 30%;
   margin: 10%; }
+
+a {
+    color: white;
+    text-decoration: none;
+}
 
 /*
 	This is the form in the sidebar
@@ -360,7 +375,7 @@ body {
 .socialMedia {
   background: #708090;
   color: #F5F5F5;
-  position: absolute;
+  position: fixed;
   width: 100%;
   bottom: 0; }
   .socialMedia .wrapper {
@@ -384,7 +399,11 @@ body {
 @media (max-width: 690px) {
   .sidebar {
     width: 100%;
-    left: -100%; } }
+    left: -100%; }
+  .rbc-calendar {
+    width: 100%;
+    margin: 0;
+    padding: 0; } }
 
 @media (max-width: 475px) {
   .sidebar input[type="submit"] {

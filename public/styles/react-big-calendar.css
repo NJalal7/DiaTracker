@@ -1,13 +1,31 @@
 .big-calender {
   display: flex;
+  position: relative;
+  height: 500px;
 }
 
-@media (max-width: 710px) {
+.rbc-calendar {
+    width: 50%;
+    margin-left: 50px;
+    background: rgba(255,255,255,0.40);
+}
+
+.notecard {
+  width: 30%;
+}
+
+@media (max-width: 690px) {
   .big-calender {
     flex-direction: column;
     width: 100%;
+    height: 1000px;
   }
+  .rbc-calendar, .notecard {
+    width: 100%;
+    height: 50%;
 }
+}
+
 
 .rbc-btn {
   color: inherit;
@@ -108,7 +126,6 @@ button.rbc-input::-moz-focus-inner {
   padding: 0 10px;
   text-align: center;
   font: font-family: 'Volkhov', serif;
-  text-transform: uppercase;
 }
 .rbc-toolbar button {
   color: #373a3c;

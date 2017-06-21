@@ -175,7 +175,7 @@ export default class Dashboard extends React.Component {
         return (
             <div>
             <main>
-				<button className="log-button" href="" onClick={(e) => this.toggleAddNote.call(this,e)}>Log</button>
+				<button className="log-button" href="" onClick={(e) => this.toggleAddNote.call(this,e)}>Submit Log</button>
 
                 <section className="notes" >
 					{/* this.state.notes.map((note,i) => <NoteCard note={note} key={note.key} removeNote={this.removeNote} />) */}
@@ -227,25 +227,7 @@ export default class Dashboard extends React.Component {
 						</div>
 					</form>
 				</div>
-				<div className="createUserModal modal" ref={ref => this.createUserModal = ref}>
-					<form action="" onSubmit={e => this.createUser.call(this,e)}>
-						<div>
-							<label htmlFor="createEmail">Email:</label>
-							<input type="text" name="createEmail" ref={ref => this.createEmail = ref}/>
-						</div>
-						<div>
-							<label htmlFor="createPassword">Password:</label>
-							<input type="password" name="createPassword" ref={ref => this.createPassword = ref}/>
-						</div>
-						<div>
-							<label htmlFor="confirmPassword">Confirm Password:</label>
-							<input type="password" name="confirmPassword" ref={ref => this.confirmPassword = ref}/>
-						</div>
-						<div>
-							<input type="submit"/>
-						</div>
-					</form>
-				</div>
+
 				<div className="calendar wrapper">
 					<Calendar notes={this.state.notes} />
 				</div>

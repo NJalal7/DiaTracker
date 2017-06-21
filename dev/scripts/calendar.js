@@ -30,7 +30,7 @@ class Calendar extends React.Component {
 	      	? <NoteCard note={this.state.current} key={this.state.current.title} removeNote={() => this.setState({ current: null })} />
 	      	: null}
 	      <BigCalendar
-	        style={{height: '420px', width: '50%', margin: '50px'}}
+	        style={{}}
 	        events={events}
 	        onSelectEvent={event => {
 	        	console.log(event)
